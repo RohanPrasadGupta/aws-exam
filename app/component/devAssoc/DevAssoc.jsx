@@ -213,12 +213,27 @@ const DevAssoc = ({ selectedTest, testData }) => {
   if (showResults) {
     const score = calculateScore();
     return (
-      <Paper sx={{ p: 4, borderRadius: 3 }}>
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="h3" sx={{ mb: 2, fontWeight: "bold" }}>
+      <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, borderRadius: 3 }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
+          <Typography
+            variant="h3"
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem" },
+            }}
+          >
             Test Complete!
           </Typography>
-          <Typography variant="h6" sx={{ mb: 2, color: "text.secondary" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              mb: 2,
+              color: "text.secondary",
+              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+              px: 1,
+            }}
+          >
             {examInfo.exam}
           </Typography>
           <Typography
@@ -226,18 +241,24 @@ const DevAssoc = ({ selectedTest, testData }) => {
             sx={{
               mb: 3,
               color: score.percentage >= 70 ? "success.main" : "error.main",
+              fontSize: { xs: "1.15rem", sm: "1.5rem", md: "2.125rem" },
+              wordBreak: "break-word",
             }}
           >
             Score: {score.correct}/{score.total} ({score.percentage}%)
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ px: 1, fontSize: { xs: "0.875rem", sm: "1rem" } }}
+          >
             {score.percentage >= 70
               ? "Congratulations! You passed!"
               : "Keep studying and try again!"}
           </Typography>
         </Box>
 
-        <Grid container spacing={2} sx={{ mt: 3 }}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mt: 2 }}>
           {questions.map((question, index) => {
             const userAnswer = userAnswers[question.id] || [];
             const isCorrect =
@@ -253,13 +274,22 @@ const DevAssoc = ({ selectedTest, testData }) => {
                   color={isCorrect ? "success" : "error"}
                   variant={userAnswer.length > 0 ? "filled" : "outlined"}
                   icon={isCorrect ? <CheckCircle /> : <Cancel />}
+                  size="small"
+                  sx={{ width: "100%", maxWidth: "100%" }}
                 />
               </Grid>
             );
           })}
         </Grid>
 
-        <Box sx={{ mt: 4, textAlign: "center" }}>
+        <Box
+          sx={{
+            mt: 4,
+            display: "flex",
+            justifyContent: "center",
+            px: 1,
+          }}
+        >
           <Button
             variant="contained"
             size="large"
@@ -274,7 +304,9 @@ const DevAssoc = ({ selectedTest, testData }) => {
             }}
             sx={{
               background: "linear-gradient(45deg, #667eea 30%, #764ba2 90%)",
-              px: 4,
+              px: { xs: 3, sm: 4 },
+              width: { xs: "100%", sm: "auto" },
+              maxWidth: 400,
             }}
           >
             Retake Test
@@ -348,7 +380,7 @@ const DevAssoc = ({ selectedTest, testData }) => {
   return (
     <Box sx={{ maxWidth: "100%", margin: "0 auto" }}>
       {/* Progress and Timer Header */}
-      <Paper sx={{ p: 3, mb: 3, borderRadius: 2 }}>
+      <Paper sx={{ p: { xs: 2, sm: 3 }, mb: 3, borderRadius: 2 }}>
         <Box
           sx={{
             display: "flex",
@@ -359,7 +391,14 @@ const DevAssoc = ({ selectedTest, testData }) => {
             gap: 2,
           }}
         >
-          <Typography variant="h6" sx={{ flexShrink: 0 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              flexShrink: 0,
+              fontSize: { xs: "0.95rem", sm: "1.25rem" },
+              lineHeight: 1.3,
+            }}
+          >
             Question {currentQuestion + 1} of {totalQuestions}
           </Typography>
           <Box
@@ -388,7 +427,16 @@ const DevAssoc = ({ selectedTest, testData }) => {
         </Box>
 
         {/* Score Counter */}
-        <Box sx={{ display: "flex", justifyContent: "center", gap: 3, mb: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: { xs: 1, sm: 2, md: 3 },
+            mb: 2,
+            flexWrap: "wrap",
+          }}
+        >
           <Chip
             icon={<CheckCircle />}
             label={`Correct: ${correctCount}`}

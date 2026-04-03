@@ -42,7 +42,9 @@ const HomePage = () => {
       sx={{
         minHeight: "100vh",
         background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        padding: "20px 0",
+        py: { xs: 2, sm: 2.5 },
+        px: { xs: 1.5, sm: 2 },
+        boxSizing: "border-box",
       }}
     >
       <Container maxWidth="lg">
@@ -51,8 +53,8 @@ const HomePage = () => {
           sx={{
             textAlign: "center",
             color: "white",
-            marginBottom: "60px",
-            paddingTop: "40px",
+            mb: { xs: 4, md: 6 },
+            pt: { xs: 2, md: 4 },
           }}
         >
           <Typography
@@ -60,8 +62,11 @@ const HomePage = () => {
             component="h1"
             sx={{
               fontWeight: "bold",
-              marginBottom: "20px",
+              mb: 2,
               textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
+              fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
+              lineHeight: 1.2,
+              px: 1,
             }}
           >
             AWS Certification Practice
@@ -73,6 +78,8 @@ const HomePage = () => {
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: 1.6,
+              fontSize: { xs: "1rem", sm: "1.15rem", md: "1.5rem" },
+              px: 1,
             }}
           >
             Master your AWS skills with our comprehensive practice exams
@@ -80,27 +87,31 @@ const HomePage = () => {
         </Box>
 
         {/* Exam Types Section */}
-        <Box sx={{ marginBottom: "40px" }}>
+        <Box sx={{ mb: { xs: 3, md: 4 } }}>
           <Typography
             variant="h4"
             component="h2"
             sx={{
               textAlign: "center",
               color: "white",
-              marginBottom: "40px",
+              mb: { xs: 3, md: 4 },
               fontWeight: "600",
+              fontSize: { xs: "1.35rem", sm: "1.75rem", md: "2.125rem" },
+              px: 1,
             }}
           >
             Available Exam Types
           </Typography>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
             {examTypes.map((exam, index) => (
-              <Grid item xs={12} md={6} key={exam.route}>
+              <Grid item xs={12} sm={12} md={6} key={exam.route}>
                 <Card
                   sx={{
                     height: "100%",
-                    width: "500px",
+                    width: "100%",
+                    maxWidth: { sm: 520, md: "100%" },
+                    mx: { xs: "auto", md: 0 },
                     display: "flex",
                     flexDirection: "column",
                     transition: "all 0.3s ease-in-out",
@@ -133,7 +144,7 @@ const HomePage = () => {
                     </Box>
                   )}
 
-                  <CardContent sx={{ flexGrow: 1, padding: "32px" }}>
+                  <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 3, md: 4 } }}>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                       <Box
                         sx={{
@@ -176,7 +187,15 @@ const HomePage = () => {
                       {exam.description}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{ padding: "0 32px 32px 32px" }}>
+                  <CardActions
+                    sx={{
+                      px: { xs: 2, sm: 3, md: 4 },
+                      pb: { xs: 2, sm: 3, md: 4 },
+                      pt: 0,
+                      flexWrap: "wrap",
+                      gap: 1,
+                    }}
+                  >
                     {exam.isLocked ? (
                       <Button
                         variant="contained"

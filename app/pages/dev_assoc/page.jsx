@@ -66,16 +66,19 @@ const page = () => {
       <Container
         maxWidth="lg"
         sx={{
-          py: 4,
+          py: { xs: 2, sm: 3, md: 4 },
+          px: { xs: 2, sm: 3 },
           position: "relative",
           zIndex: 1,
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
+          boxSizing: "border-box",
+          width: "100%",
         }}
       >
         {selectedTest === "" ? (
-          <Box sx={{ flex: 1, width: "600px" }}>
+          <Box sx={{ flex: 1, width: "100%", maxWidth: 720, mx: "auto" }}>
             {/* Hero Section */}
             <Box>
               <Button
@@ -108,16 +111,20 @@ const page = () => {
                 </Link>
               </Button>
             </Box>
-            <Box sx={{ textAlign: "center", mb: 8, mt: 4 }}>
+            <Box
+              sx={{ textAlign: "center", mb: { xs: 4, md: 6 }, mt: { xs: 2, md: 4 } }}
+            >
               <Typography
                 variant="h3"
                 component="h1"
                 sx={{
                   fontWeight: "800",
-                  mb: 3,
+                  mb: 2,
                   color: "white",
                   textShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                  fontSize: { xs: "2.5rem", md: "3.5rem" },
+                  fontSize: { xs: "1.65rem", sm: "2.25rem", md: "3.5rem" },
+                  lineHeight: 1.2,
+                  px: 1,
                 }}
               >
                 AWS Developer Associate
@@ -129,6 +136,7 @@ const page = () => {
                   mb: 2,
                   color: "rgba(255,255,255,0.9)",
                   textShadow: "0 2px 10px rgba(0,0,0,0.2)",
+                  fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
                 }}
               >
                 Practice Tests
@@ -141,6 +149,8 @@ const page = () => {
                   color: "rgba(255,255,255,0.8)",
                   lineHeight: 1.6,
                   textShadow: "0 2px 8px rgba(0,0,0,0.2)",
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+                  px: 1,
                 }}
               >
                 Choose a practice test to begin your AWS Developer Associate
@@ -149,15 +159,15 @@ const page = () => {
             </Box>
 
             {/* Test Selection Cards */}
-            <Grid
-              sx={{ mt: 2, display: "grid", gap: 4, justifyContent: "center" }}
-            >
+            <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mt: 2 }} justifyContent="center">
               {Questions.map((item, index) => (
-                <Grid item xs={12} md={6} key={item.testSelected}>
+                <Grid item xs={12} md={10} lg={8} key={item.testSelected}>
                   <Card
                     sx={{
                       height: "100%",
-                      width: "500px",
+                      width: "100%",
+                      maxWidth: 560,
+                      mx: "auto",
                       display: "flex",
                       flexDirection: "column",
                       background: "rgba(255,255,255,0.95)",
@@ -197,7 +207,7 @@ const page = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{ flexGrow: 1, padding: "32px" }}>
+                    <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 3, md: 4 } }}>
                       <Box
                         sx={{ display: "flex", alignItems: "center", mb: 2 }}
                       >
@@ -224,6 +234,7 @@ const page = () => {
                             fontWeight: "700",
                             color: "#2d3748",
                             lineHeight: 1.2,
+                            fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
                           }}
                         >
                           {item.testNumber}
@@ -292,7 +303,13 @@ const page = () => {
                       </Box>
                     </CardContent>
 
-                    <CardActions sx={{ padding: "0 32px 32px 32px" }}>
+                    <CardActions
+                      sx={{
+                        px: { xs: 2, sm: 3, md: 4 },
+                        pb: { xs: 2, sm: 3, md: 4 },
+                        pt: 0,
+                      }}
+                    >
                       <Button
                         variant="contained"
                         size="large"
@@ -348,10 +365,13 @@ const page = () => {
             sx={{
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(20px)",
-              borderRadius: "20px",
+              borderRadius: { xs: 2, sm: 3, md: "20px" },
               border: "1px solid rgba(255,255,255,0.2)",
-              p: 4,
+              p: { xs: 2, sm: 3, md: 4 },
               mt: 2,
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
             }}
           >
             {/* Back Button and Test Header */}
@@ -384,6 +404,9 @@ const page = () => {
                     backgroundClip: "text",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
+                    fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2.125rem" },
+                    lineHeight: 1.3,
+                    wordBreak: "break-word",
                   }}
                 >
                   {selectedTestData.testNumber}
